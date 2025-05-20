@@ -3,17 +3,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      python: 3.13
-  pre_build:
+      python: 3.9
     commands:
-      - echo "Installing dependencies..."
-      - pip install -r requirements.txt -t package/
+      - pip install -r requirements.txt -t .
   build:
     commands:
-      - echo "Packaging Lambda function..."
-      - cp lambda_function.py package/
-      - cd package
-      - zip -r ../lambda_function.zip .
+      - zip -r lambda_function_payload.zip .
 artifacts:
   files:
-    - lambda_function.zip
+    - lambda_function_payload.zip
+  discard-paths: yes
